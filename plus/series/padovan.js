@@ -7,6 +7,7 @@
  * @returns {number}
  */
 
+/*
 function padovan(n) {
     let previous1 = 1;
     let previous2 = 1;
@@ -24,4 +25,16 @@ function padovan(n) {
         } throw "Should be 0 or more.";
     } throw new TypeError("Not a number");
 }
+module.exports = padovan;
+*/
+
+function padovan(n) {
+    if (typeof n === "number") {
+        if (n >= 0) {
+            if (n <= 2) {
+                return 1;
+            }   return padovan(n-2) + padovan(n-3);
+        }   throw "Should be 0 or more.";
+    }   throw new TypeError("Not a number");
+} 
 module.exports = padovan;

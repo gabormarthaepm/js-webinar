@@ -1,7 +1,7 @@
 const pellNumber = require("../../series/pellNumber");
 const expect = require('chai').expect;
 
-describe.only("In the Pell series", () => {
+describe("In the Pell series", () => {
     it("the parameter should be a number", () => {
         expect(()=>pellNumber("Test")).to.throw(TypeError)
     });
