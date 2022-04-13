@@ -5,3 +5,13 @@
  * @returns {string[]} the list of the properties of the object
  *                     or empty array if it is not an object
  */
+
+function properties(o) {
+    
+    if (typeof o === "object") {
+          return Object.keys(o);
+    }
+    return [];
+}
+
+module.exports = properties;
