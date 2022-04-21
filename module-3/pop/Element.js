@@ -15,4 +15,50 @@
  *       the given name or throws an Erorr if it cannot
  *       find the element
  */
-module.exports = class Element {}
+
+'use strict';
+
+class Element {
+    constructor(name, locator) {
+        this.name = name;
+        this.locator = locator;
+
+        this.parent = null;
+        this.children = {};
+
+    }
+
+    setParent(parent) {
+        this.parent = parent;
+    }
+    
+    addChildren(child) {
+        if (this.children.hasOwnProperty(child.name)) {
+            throw new Error(child.name + " is already added!");
+        }
+        this.children[child.name] = child;
+        child.setParent(this);
+    }
+
+    get(name) {
+        if (arguments.length == 0) {
+            return element(this.locator);
+        }
+        if (this.children.hasOwnProperty(name)) {
+            return this.children[name].get();
+        }
+        for (let childName in this.children) {
+            let child = this.children[childName];
+
+            try {
+                return child.get(name);
+            } catch {
+
+            }
+        }
+
+        throw new Error("Element with " + name + " not found.");
+    }
+}
+
+module.exports = Element;
