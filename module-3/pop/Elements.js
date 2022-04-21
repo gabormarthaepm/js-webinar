@@ -1,5 +1,5 @@
 /**
- * Create Elements class, which represents a collection of
+ * Create Elements class which represents a collection of
  * elements of the application, and
  * 
  * 1. It has a protractor locator (.locator),
@@ -12,6 +12,9 @@
  *    in the collection by the locator (.all()) in it's context
  * 6. It has a method to retrieve one element from the collection
  *    by the locator (.get(n)) in it's context
+ * 
+ * Use Protractor API to retrieve elements
+ * @see {@link https://www.protractortest.org/#/api?view=ElementArrayFinder}
  */
 
 const Element = require("./Element");
