@@ -9,5 +9,25 @@ async function wait() {
  * You can't use "await"!
  */
 module.exports = function f() {
-    // ...what to write here?
+    return wait();
 }
+    // ...what to write here?
+    /*
+    const p = new Promise(function(resolve){
+        setTimeout((wait) => {
+            resolve();
+        }, 1000);
+    });
+}
+   */
+    
+    /*
+    const p = new Promise(function(resolve) {
+        setTimeout(() => {
+            resolve(10);
+        }, 1000);
+    });
+    return p;
+  
+}
+  */
