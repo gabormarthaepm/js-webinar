@@ -17,6 +17,7 @@
  * @see {@link https://www.protractortest.org/#/api?view=ElementArrayFinder}
  */
 
+/*
 const Element = require("./Element");
 
 class Elements extends Element {
@@ -38,5 +39,43 @@ class Elements extends Element {
         return this.all().get(n);
     }
 }
+
+module.exports = Elements;
+*/
+
+//const { element } = require("../test/mock/ElementFinder");
+const { prototype } = require("mocha");
+const Element = require("./Element");
+
+function Elements(name, locator) {
+    Element.call(this, name, locator);
+    this.children = null;
+
+}
+
+Elements.prototype = Object.create(
+    Element.prototype
+);
+Elements.prototype.constructor = Elements;
+
+Object.defineProperty(this, "name", {
+    writable: false
+});
+
+Object.defineProperty(this, "locator", {
+    writable: false
+});
+
+Elements.prototype.addChildren = function () {
+    throw new Error("Element cannot have children!");
+};
+
+Elements.prototype.all = function () {
+    return element.all(this.locator);
+};
+
+Elements.prototype.get = function (n) {
+    return this.all().get(n);
+};
 
 module.exports = Elements;
